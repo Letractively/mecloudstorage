@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=GB18030"
 	pageEncoding="GB18030"%>
 <%@ page import="com.hdfs.util.HDFSFileUtil"%>
+<%@ page import="com.hdfs.dao.LogDao"%>
+<%@ page import="com.hdfs.dao.impl.LogDaoImpl"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -21,6 +23,8 @@ p {
 		String dir = baseuri + username + "/" + file;
 		HDFSFileUtil hUtil = new HDFSFileUtil();
 		hUtil.download(username, file);
+		LogDao log = new LogDaoImpl();
+		log.write(username, "download", file, dir);
 	%>
 	<p>File download successfully!!!</p>
 </body>

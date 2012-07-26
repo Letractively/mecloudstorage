@@ -9,15 +9,14 @@ import com.hdfs.dao.LoginDao;
 import com.hdfs.pojo.User;
 import com.hdfs.util.DBUtil;
 
-public class LoginDaoImpl implements LoginDao{
+public class LoginDaoImpl implements LoginDao {
 	public User login(String username, String password) {
 		User u = null;
 		String sql = "SELECT * FROM user WHERE username=? and password=? ";
 		DBUtil util = new DBUtil();
 		Connection conn = util.openConnection();
-		PreparedStatement pstmt = null;
 		try {
-			pstmt = conn.prepareStatement(sql);
+			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, username);
 			pstmt.setString(2, password);
 			ResultSet rs = pstmt.executeQuery();

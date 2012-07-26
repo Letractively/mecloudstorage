@@ -12,9 +12,8 @@ public class RegisterDaoImpl implements RegisterDao {
 		String sql = "INSERT INTO user (username, password) VALUES(?, ?)";
 		DBUtil util = new DBUtil();
 		Connection conn = util.openConnection();
-		PreparedStatement pstmt = null;
 		try {
-			pstmt = conn.prepareStatement(sql);
+			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, username);
 			pstmt.setString(2, password);
 			if (pstmt.executeUpdate() > 0) {

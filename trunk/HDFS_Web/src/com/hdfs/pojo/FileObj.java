@@ -2,8 +2,8 @@ package com.hdfs.pojo;
 import org.apache.hadoop.fs.FileStatus;
 
 /**
- * 用于文件系统操作的对象，根据HDFS那个表制作。
- *  @author 李志闯
+ * the file status, learn from HDFS browser.
+ *  @author liz0608
  */
 public class FileObj {
 	public FileObj(FileStatus fs) {
