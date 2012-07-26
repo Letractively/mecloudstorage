@@ -6,11 +6,11 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 /**
- * @author 李志闯
+ * @author liz0608
  */
 public class DBUtil {
-	/*
-	 * 打开数据库连接
+	/**
+	 * open connection.
 	 */
 	public Connection openConnection() {
 		Properties prop = new Properties();
@@ -35,8 +35,8 @@ public class DBUtil {
 		return null;
 	}
 
-	/*
-	 * 关闭数据库连接
+	/**
+	 * close connection.
 	 */
 	public void closeConnection(Connection conn) {
 		try {

@@ -1,9 +1,8 @@
 package com.hdfs.pojo;
 
 /**
- * 该类用于保存从MySQL数据库中取出来的用户信息。
- * 
- * @author 李志闯
+ * mysql user table
+ * @author liz0608
  * 
  */
 public class User {

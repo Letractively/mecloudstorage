@@ -13,7 +13,7 @@
 <title>File Browse</title>
 <style type="text/css">
 body {
-	background-color: cyan;
+	background-color: #87CEEB;
 }
 
 h1 {
@@ -55,6 +55,10 @@ table,th,td {
 fieldset {
 	width: 300px;
 }
+
+div {
+	text-align: right;
+}
 </style>
 </head>
 <body>
@@ -78,10 +82,9 @@ fieldset {
 
 	<fieldset>
 		<legend>File Upload</legend>
-		<form
-			action="upload.jsp?username=<%=u.getUsername()%>&password=<%=u.getPassword()%>"
-			method="post" name="form" enctype="multipart/form-data">
-			<input type="file" name="file1" id="file1" /><br /> <input
+		<form action="upload.jsp?username=<%=u.getUsername()%>" method="post"
+			name="form" enctype="multipart/form-data">
+			<input type="file" name="file" id="file" /><br /> <input
 				type="submit" value="Submit" /> <input type="reset" value="Reset" />
 		</form>
 	</fieldset>
@@ -136,10 +139,9 @@ fieldset {
 	<br />
 	<fieldset>
 		<legend>File Upload</legend>
-		<form
-			action="upload.jsp?username=<%=u.getUsername()%>&password=<%=u.getPassword()%>"
-			method="post" name="form" enctype="multipart/form-data">
-			<input type="file" name="file1" id="file1" /><br /> <input
+		<form action="upload.jsp?username=<%=u.getUsername()%>" method="post"
+			name="form" enctype="multipart/form-data">
+			<input type="file" name="file" id="file" /><br /> <input
 				type="submit" value="Submit" /> <input type="reset" value="Reset" />
 		</form>
 	</fieldset>
@@ -156,6 +158,8 @@ fieldset {
 	<%
 		}
 	%>
-
+	<div>
+		<a href="history.jsp?username=<%=username%>">History</a>
+	</div>
 </body>
 </html>

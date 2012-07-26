@@ -10,17 +10,12 @@ import java.io.OutputStream;
 import java.net.URI;
 import java.util.ArrayList;
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.commons.fileupload.FileItemIterator;
-import org.apache.commons.fileupload.FileItemStream;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import org.apache.commons.fileupload.util.Streams;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FSDataInputStream;
 import org.apache.hadoop.fs.FileStatus;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.IOUtils;
 
 import com.hdfs.pojo.FileObj;
 
@@ -30,7 +25,7 @@ public class HDFSFileUtil {
 	private static String baseuri = "hdfs://10.120.220.94:9000/user/user/";
 
 	/**
-	 * 获取文件状态列表
+	 * get files status.
 	 */
 	public ArrayList<FileObj> getList(String home) throws IOException {
 		FileSystem fs = FileSystem.get(URI.create(home), new Configuration());
@@ -45,59 +40,35 @@ public class HDFSFileUtil {
 	}
 
 	/**
-	 * 上传文件.(还需要进行修改)
+	 * upload
 	 * 
 	 */
-	public void upload(String homedir, HttpServletRequest request)
+	public void upload(String username, BufferedInputStream in, String fileName)
 			throws IOException {
 		conf = getConfiguration();
+		String homedir = baseuri + username + "/";
 		FileSystem fs = FileSystem.get(URI.create(homedir), conf);
-		if (ServletFileUpload.isMultipartContent(request)) {
-			try {
-				ServletFileUpload upload = new ServletFileUpload();
-				FileItemIterator iter = upload.getItemIterator(request);
-				while (iter.hasNext()) {
-					FileItemStream item = iter.next();
-					if (!item.isFormField() && item.getName().length() > 0) {
-						String fileName = item.getName();
-						BufferedInputStream in = new BufferedInputStream(
-								item.openStream());
-						BufferedOutputStream out = new BufferedOutputStream(
-								fs.create(new Path(homedir + fileName)));
-						Streams.copy(in, out, true);
-					}
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
+		BufferedOutputStream out = new BufferedOutputStream(fs.create(new Path(
+				homedir + fileName)));
+		IOUtils.copyBytes(in, out, 4096, true);
 	}
 
-	public void download(String username, String file)
+	/**
+	 * download
+	 * 
+	 */
+	public void download(String username, String filename)
 			throws FileNotFoundException, IOException {
 		conf = getConfiguration();
-		String remote = baseuri + username + "/" + file;
-		String local = "D:\\hdfs\\" + file;
+		String remote = baseuri + username + "/" + filename;
+		String local = "D:\\hdfs\\" + filename;
 
 		FileSystem fs = FileSystem.get(URI.create(baseuri), conf);
 		FSDataInputStream hdfsInStream = fs.open(new Path(remote));
-		File fi = new File(local);
-		if (fi.exists()) {
-			if (fi.isDirectory()) {
-				;
-			} else {
-				fi.createNewFile();
-			}
-		} else {
-			File fil = new File(fi.getParent());
-			fil.mkdirs();
-			if (fi.isDirectory()) {
-				;
-			} else {
-				fi.createNewFile();
-			}
-		}
-		OutputStream out = new FileOutputStream(fi);
+		File file = new File(local);
+		file.getParentFile().mkdirs();
+		file.createNewFile();
+		OutputStream out = new FileOutputStream(file);
 		byte[] ioBuffer = new byte[4096];
 		int readLen = 0;
 		while ((readLen = hdfsInStream.read(ioBuffer)) != -1) {
@@ -109,7 +80,7 @@ public class HDFSFileUtil {
 	}
 
 	/**
-	 * 删除一个文件或目录
+	 * delete
 	 * 
 	 */
 	public void delete(String file) throws FileNotFoundException, IOException {
@@ -120,13 +91,17 @@ public class HDFSFileUtil {
 	}
 
 	/**
-	 * 获取根目录
+	 * get baseuri.
 	 * 
 	 */
 	public static String getBaseuri() {
 		return baseuri;
 	}
 
+	/**
+	 * get configuration.
+	 * 
+	 */
 	private static Configuration getConfiguration() {
 		if (conf == null) {
 			conf = new Configuration();

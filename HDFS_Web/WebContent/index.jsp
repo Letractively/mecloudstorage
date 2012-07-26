@@ -8,7 +8,7 @@
 <style type="text/css">
 body {
 	text-align: center;
-	background-color: cyan;
+	background-color: #87CEEB;
 }
 
 h1 {
