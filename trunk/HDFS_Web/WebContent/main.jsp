@@ -62,6 +62,7 @@ div {
 </style>
 </head>
 <body>
+	<h1>A Cloud Storage System Based On HDFS</h1>
 	<%!private static String baseuri = HDFSFileUtil.getBaseuri();%>
 	<%
 		LoginDao dao = new LoginDaoImpl();
@@ -75,19 +76,7 @@ div {
 				ArrayList<FileObj> lst = hUtil.getList(homedir);
 				if (lst.size() != 0) {
 	%>
-	<br />
-	<br />
-	<br />
-	<h1>A Cloud Storage System Based On HDFS</h1>
 
-	<fieldset>
-		<legend>File Upload</legend>
-		<form action="upload.jsp?username=<%=u.getUsername()%>" method="post"
-			name="form" enctype="multipart/form-data">
-			<input type="file" name="file" id="file" /><br /> <input
-				type="submit" value="Submit" /> <input type="reset" value="Reset" />
-		</form>
-	</fieldset>
 	<h2><%=u.getUsername().toUpperCase()%>'s Home Directory
 	</h2>
 	<table>
@@ -127,6 +116,14 @@ div {
 			%>
 		
 	</table>
+	<fieldset>
+		<legend>File Upload</legend>
+		<form action="upload.jsp?username=<%=u.getUsername()%>" method="post"
+			name="form" enctype="multipart/form-data">
+			<input type="file" name="file" id="file" /><br /> <input
+				type="submit" value="Submit" /> <input type="reset" value="Reset" />
+		</form>
+	</fieldset>
 	<%
 		} else {
 	%>

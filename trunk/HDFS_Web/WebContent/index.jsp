@@ -17,9 +17,6 @@ h1 {
 }
 
 img {
-	border-style: solid;
-	border-width: 5px;
-	border-color: #98bf21;
 	width: 420px;
 	height: 308px;
 }
@@ -28,6 +25,10 @@ fieldset {
 	text-align: left;
 	margin: 0px auto;
 	width: 300px;
+}
+
+form {
+	text-align: center;
 }
 
 div {
@@ -39,15 +40,8 @@ div {
 	<div>
 		<a href="register.jsp">Register</a>
 	</div>
-	<br />
-	<br />
 	<h1>A Cloud Storage System Based On HDFS</h1>
-	<br />
-	<br />
-	<br />
 	<img src="picture/cloud.png" />
-	<br />
-	<br />
 	<fieldset>
 		<legend>Login</legend>
 		<form action="main.jsp" method="post" name="form">

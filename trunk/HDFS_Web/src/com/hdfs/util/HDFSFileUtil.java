@@ -2,16 +2,13 @@ package com.hdfs.util;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
+import java.io.InputStream;
 import java.net.URI;
 import java.util.ArrayList;
 
 import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.fs.FSDataInputStream;
 import org.apache.hadoop.fs.FileStatus;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
@@ -22,7 +19,7 @@ import com.hdfs.pojo.FileObj;
 public class HDFSFileUtil {
 
 	private static Configuration conf;
-	private static String baseuri = "hdfs://10.120.220.94:9000/user/user/";
+	private static String baseuri = "hdfs://master:9000/user/user/";
 
 	/**
 	 * get files status.
@@ -54,29 +51,16 @@ public class HDFSFileUtil {
 	}
 
 	/**
-	 * download
+	 * stream download
 	 * 
 	 */
-	public void download(String username, String filename)
-			throws FileNotFoundException, IOException {
+	public InputStream download(String username, String filename)
+			throws IOException {
 		conf = getConfiguration();
 		String remote = baseuri + username + "/" + filename;
-		String local = "D:\\hdfs\\" + filename;
-
 		FileSystem fs = FileSystem.get(URI.create(baseuri), conf);
-		FSDataInputStream hdfsInStream = fs.open(new Path(remote));
-		File file = new File(local);
-		file.getParentFile().mkdirs();
-		file.createNewFile();
-		OutputStream out = new FileOutputStream(file);
-		byte[] ioBuffer = new byte[4096];
-		int readLen = 0;
-		while ((readLen = hdfsInStream.read(ioBuffer)) != -1) {
-			out.write(ioBuffer, 0, readLen);
-		}
-		out.close();
-		hdfsInStream.close();
-		fs.close();
+		InputStream in = fs.open(new Path(remote));
+		return in;
 	}
 
 	/**
