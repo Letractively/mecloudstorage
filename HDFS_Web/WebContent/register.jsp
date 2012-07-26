@@ -7,29 +7,54 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=GB18030">
 <title>Register</title>
+<style type="text/css">
+body {
+	background-color: #87CEEB;
+	text-align: center;
+}
+
+h1 {
+	color: green;
+	font-size: 50px;
+}
+
+fieldset {
+	text-align: left;
+	margin: 0px auto;
+	width: 300px;
+}
+
+form {
+	text-align: center;
+}
+</style>
 </head>
 <body>
 	<h1>User Register</h1>
-	<form action="register.jsp" method="post" name="form">
-		<input type="text" name="username" /><br /> <input type="text"
-			name="password" /><br /> <input type="submit" value="Submit" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
-			type="reset" value="Reset" />
-	</form>
+	<fieldset>
+		<legend>Input your information</legend>
+		<form action="register.jsp" method="post" name="form">
+			<label>Username:</label> <input type="text" name="username" /><br />
+			<label>Password:</label> <input type="text" name="password" /><br />
+			<input type="submit" value="Submit" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+				type="reset" value="Reset" />
+		</form>
+	</fieldset>
 	<%
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		RegisterDao dao = new RegisterDaoImpl();
-		if (dao.register(username, password)) {
+		if (username == "" || password == "") {
+	%>
+	<p>Username or password can't be null, please try it again.</p>
+	<%
+		} else if (dao.register(username, password)) {
 	%>
 	<jsp:forward page="return.jsp"></jsp:forward>
 	<%
-		} else if (!(username == null) && !(password == null)) {
-	%>
-	<p>Register is failed, please do it again.</p>
-	<%
 		} else {
 	%>
-	<p>Please Register.</p>
+	<p>Register is failed, please try it again.</p>
 	<%
 		}
 	%>

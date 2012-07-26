@@ -34,11 +34,12 @@ table {
 
 tr {
 	vertical-align: top;
+	border-style: dotted;
 	background-color: LightBlue;
 }
 
 th {
-	background-color: green;
+	background-color: blue;
 	color: white;
 }
 
@@ -52,9 +53,6 @@ table,th,td {
 </style>
 </head>
 <body>
-	<br />
-	<br />
-	<br />
 	<h1>A Cloud Storage System Based On HDFS</h1>
 	<%
 		String username = request.getParameter("username");
