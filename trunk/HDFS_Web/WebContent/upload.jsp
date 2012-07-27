@@ -46,10 +46,9 @@ body {
 			}
 		}
 	%>
-	<p>File upload successfully!!!</p>
 
 	<script type="text/javascript">
-		alert("Return to the main page.");
+		alert("File upload successfully!!!");
 		window.history.back(-1);
 	</script>
 </body>

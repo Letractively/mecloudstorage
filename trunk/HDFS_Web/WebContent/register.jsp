@@ -44,9 +44,10 @@ form {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		RegisterDao dao = new RegisterDaoImpl();
-		if (username == "" || password == "") {
+		if (username == "" || password == "" || username == null
+				|| password == null) {
 	%>
-	<p>Username or password can't be null, please try it again.</p>
+	<p>Username or password can't be null, please input them.</p>
 	<%
 		} else if (dao.register(username, password)) {
 	%>
