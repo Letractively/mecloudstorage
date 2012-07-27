@@ -8,7 +8,8 @@
 </head>
 <body>
 	<%
-		String filename = request.getParameter("file");
+		String file = request.getParameter("file");
+		String filename = new String(file.getBytes("iso-8859-1"), "GB18030");
 		String username = request.getParameter("username");
 	%>
 	<table border="1">
