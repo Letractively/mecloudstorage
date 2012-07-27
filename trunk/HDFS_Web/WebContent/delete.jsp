@@ -20,11 +20,12 @@ p {
 	<%
 		String username = request.getParameter("username");
 		String file = request.getParameter("file");
-		String dir = baseuri + username + "/" + file;
+		String filename = new String(file.getBytes("iso-8859-1"), "GB18030");
+		String dir = baseuri + username + "/" + filename;
 		HDFSFileUtil hUtil = new HDFSFileUtil();
 		hUtil.delete(dir);
 		LogDao log = new LogDaoImpl();
-		log.write(username, "delete", file, dir);
+		log.write(username, "delete", filename, dir);
 	%>
 	<p>File delete successfully!!!</p>
 

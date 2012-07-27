@@ -21,7 +21,8 @@ p {
 	<%
 		String username = request.getParameter("username");
 		String file = request.getParameter("file");
-		String dir = baseuri + username + "/" + file;
+		String filename = new String(file.getBytes("iso-8859-1"), "GB18030");
+		String dir = baseuri + username + "/" + filename;
 		response.reset();
 		out.clear();
 		out = pageContext.pushBody();
@@ -33,7 +34,7 @@ p {
 		try {
 			outres = response.getOutputStream();
 			HDFSFileUtil hUtil = new HDFSFileUtil();
-			in = hUtil.download(username, file);
+			in = hUtil.download(username, filename);
 			byte[] ioBuffer = new byte[4096];
 			int readLen = 0;
 			while ((readLen = in.read(ioBuffer)) != -1) {
@@ -46,7 +47,7 @@ p {
 			in.close();
 		}
 		LogDao log = new LogDaoImpl();
-		log.write(username, "download", file, dir);
+		log.write(username, "download", filename, dir);
 	%>
 </body>
 </html>

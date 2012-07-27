@@ -8,7 +8,7 @@ create table user
 (
 	username varchar(20) primary key,
 	password varchar(20) not null
-);
+) default charset=utf8;
 
 #log table
 create table log
@@ -19,4 +19,4 @@ create table log
 	action enum("upload", "download", "delete") not null,
 	filename varchar(255) not null,
 	pathname varchar(255) not null
-);
+) default charset=utf8;

@@ -64,12 +64,12 @@ public class HDFSFileUtil {
 	}
 
 	/**
-	 * delete
+	 * delete(URI.create(xxx), xxx can't include the illegal characters.)
 	 * 
 	 */
 	public void delete(String file) throws FileNotFoundException, IOException {
 		conf = getConfiguration();
-		FileSystem fs = FileSystem.get(URI.create(file), conf);
+		FileSystem fs = FileSystem.get(URI.create(baseuri), conf);// URI.create(xxx)
 		fs.deleteOnExit(new Path(file));
 		fs.close();
 	}

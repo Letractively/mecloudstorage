@@ -86,6 +86,9 @@ table,th,td {
 			}
 		%>
 	</table>
+	<br />
+	<br />
+	<br />
 	<%
 		} else {
 	%>
