@@ -20,9 +20,7 @@
 		response.reset();
 		out.clear();
 		out = pageContext.pushBody();
-		response.setContentType("application/x-download");
-		response.addHeader("Content-Disposition", "attachment;filename="
-				+ file);
+		response.setContentType("image/jpeg");
 		OutputStream outres = null;
 		InputStream in = null;
 		try {
@@ -40,8 +38,6 @@
 			outres.close();
 			in.close();
 		}
-		LogDao log = new LogDaoImpl();
-		log.write(username, "download", filename, dir);
 	%>
 </body>
 </html>

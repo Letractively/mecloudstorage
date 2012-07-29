@@ -13,17 +13,17 @@
 <title>File Browse</title>
 <style type="text/css">
 body {
-	background-color: #87CEEB;
+	background-image: url('picture/gradient.png');
+	background-repeat: repeat-x;
 }
 
 h1 {
 	color: green;
-	font-size: 50px;
+	font-family: sans-serif;
 	text-align: center;
 }
 
 h2 {
-	font-size: 30px;
 	text-align: center;
 }
 

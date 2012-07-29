@@ -9,13 +9,15 @@
 <title>Register</title>
 <style type="text/css">
 body {
-	background-color: #87CEEB;
+	background-image: url('picture/gradient.png');
+	background-repeat: repeat-x;
 	text-align: center;
 }
 
 h1 {
 	color: green;
-	font-size: 50px;
+	font-family: sans-serif;
+	text-align: center;
 }
 
 fieldset {

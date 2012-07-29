@@ -5,6 +5,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=GB18030">
 <title>File Operation</title>
+<style type="text/css">
+table {
+	font-size: 20px;
+	border-collapse: collapse;
+	frame: box;
+}
+</style>
 </head>
 <body>
 	<%
@@ -23,13 +30,22 @@
 	<form name="download"
 		action="download.jsp?file=<%=filename%>&username=<%=username%>"
 		method="POST" enctype="multipart/form-data">
-		Click to download this file <br /> <input type="submit"
-			value="Download" /><br /> <br />
+		<label>Click to download this file</label> <br /> <input
+			type="submit" value="Download" /><br /> <br />
 	</form>
+	
 	<form name="delete"
 		action="delete.jsp?file=<%=filename%>&username=<%=username%>"
 		method="POST" enctype="multipart/form-data">
-		Click to delete this file <br /> <input type="submit" value="Delete" /><br />
+		<label>Click to delete this file</label> <br /> <input type="submit"
+			value="Delete" /><br /><br />
+	</form>
+
+	<form name="look"
+		action="look.jsp?file=<%=filename%>&username=<%=username%>"
+		method="POST" enctype="multipart/form-data">
+		<label>Click to look this file</label> <br /> <input type="submit"
+			value="Look" /><br />
 	</form>
 </body>
 </html>
