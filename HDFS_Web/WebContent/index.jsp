@@ -7,50 +7,61 @@
 <title>A cloud storage based on HDFS</title>
 <style type="text/css">
 body {
-	text-align: center;
-	background-color: #87CEEB;
+	background-image: url('picture/gradient.png');
+	background-repeat: repeat-x;
+}
+
+#div1 {
+	text-align: right;
 }
 
 h1 {
 	color: green;
-	font-size: 50px;
+	font-family: sans-serif;
+	text-align: center;
+}
+
+#div2 {
+	text-align: center;
+	position: relative;
+	top: 80px;
 }
 
 img {
-	width: 420px;
-	height: 308px;
+	width: 600px;
+	height: 316px;
 }
 
 fieldset {
 	text-align: left;
 	margin: 0px auto;
 	width: 300px;
+	position: relative;
+	top: -180px;
 }
 
 form {
 	text-align: center;
 }
-
-div {
-	text-align: right;
-}
 </style>
 </head>
 <body>
-	<div>
+	<div id="div1">
 		<a href="register.jsp">Register</a>
+		<h1>A Cloud Storage System Based On HDFS</h1>
 	</div>
-	<h1>A Cloud Storage System Based On HDFS</h1>
-	<img src="picture/cloud.png" />
-	<fieldset>
-		<legend>Login</legend>
-		<form action="main.jsp" method="post" name="form">
-			<label>Username:</label> <input type="text" name="username"></input>
-			<br /> <label>Password:</label> <input type="password"
-				name="password"></input> <br /> <input type="submit" name="submit"
-				value="Submit"></input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
-				type="reset" name="reset" value="Reset"></input>
-		</form>
-	</fieldset>
+	<div id="div2">
+		<img src="picture/cloud2.png" />
+		<fieldset>
+			<legend>Login</legend>
+			<form action="main.jsp" method="post" name="form">
+				<label>Username:</label> <input type="text" name="username"></input>
+				<br /> <label>Password:</label> <input type="password"
+					name="password"></input> <br /> <input type="submit" name="submit"
+					value="Submit"></input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+					type="reset" name="reset" value="Reset"></input>
+			</form>
+		</fieldset>
+	</div>
 </body>
 </html>

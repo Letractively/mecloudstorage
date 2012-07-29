@@ -11,7 +11,8 @@
 <style type="text/css">
 p {
 	color: blue;
-	text-align: centerfond-size:40px
+	text-align: center;
+	fond-size:40px;
 }
 </style>
 </head>
