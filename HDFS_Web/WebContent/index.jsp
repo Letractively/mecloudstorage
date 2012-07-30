@@ -51,7 +51,7 @@ form {
 		<h1>A Cloud Storage System Based On HDFS</h1>
 	</div>
 	<div id="div2">
-		<img src="picture/cloud2.png" />
+		<img src="picture/cloud.png" />
 		<fieldset>
 			<legend>Login</legend>
 			<form action="main.jsp" method="post" name="form">

@@ -34,8 +34,7 @@ table {
 
 tr {
 	vertical-align: top;
-	border-style: dotted;
-	background-color: LightBlue;
+	background-color: #99CC99;
 }
 
 th {
@@ -43,11 +42,7 @@ th {
 	color: white;
 }
 
-td.name {
-	text-align: left;
-}
-
-table,th,td {
+th,td {
 	border: 1px solid black;
 }
 </style>
@@ -55,7 +50,7 @@ table,th,td {
 <body>
 	<h1>A Cloud Storage System Based On HDFS</h1>
 	<%
-		String username = request.getParameter("username");
+		String username = (String) session.getAttribute("username");
 		LogDao log = new LogDaoImpl();
 		ArrayList<Log> loglist = new ArrayList<Log>();
 		loglist = log.read(username);
