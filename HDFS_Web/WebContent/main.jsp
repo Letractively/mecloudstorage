@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Upload Files</title>
+<title>File Browse</title>
 <style type="text/css">
 body {
 	background-image: url('picture/gradient.png');
