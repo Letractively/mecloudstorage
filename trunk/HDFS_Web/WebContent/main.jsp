@@ -6,11 +6,11 @@
 <%@ page import="com.hdfs.pojo.*"%>
 <%@ page import="java.util.*"%>
 <%@ page import="java.text.DecimalFormat"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=GB18030">
-<title>File Browse</title>
+<meta charset="UTF-8">
+<title>Upload Files</title>
 <style type="text/css">
 body {
 	background-image: url('picture/gradient.png');
@@ -44,7 +44,7 @@ th {
 	color: white;
 }
 
-td.name {
+.name {
 	text-align: left;
 }
 
@@ -68,6 +68,7 @@ div {
 		LoginDao dao = new LoginDaoImpl();
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
+		session.setAttribute("username", username);
 		if (username != "" && password != "") {
 			User u = dao.login(username, password);
 			if (u != null) {
@@ -96,7 +97,7 @@ div {
 		%>
 		<tr>
 			<td class="name"><a target="_blank"
-				href="file.jsp?file=<%=lst.get(i).getName()%>&username=<%=u.getUsername()%>">
+				href="file.jsp?file=<%=lst.get(i).getName()%>">
 					<%=lst.get(i).getName()%></a></td>
 			<td><%=lst.get(i).isType() ? "dir" : "file"%></td>
 			<%
@@ -118,10 +119,11 @@ div {
 	</table>
 	<fieldset>
 		<legend>File Upload</legend>
-		<form action="upload.jsp?username=<%=u.getUsername()%>" method="post"
+		<form action="upload.jsp" method="post"
 			name="form" enctype="multipart/form-data">
-			<input type="file" name="file" id="file" /><br /> <input
-				type="submit" value="Submit" /> <input type="reset" value="Reset" />
+			<input type="file" name="file" id="file" multiple size="80" /><br />
+			<input type="submit" value="Submit" /> <input type="reset"
+				value="Reset" />
 		</form>
 	</fieldset>
 	<%
@@ -136,10 +138,11 @@ div {
 	<br />
 	<fieldset>
 		<legend>File Upload</legend>
-		<form action="upload.jsp?username=<%=u.getUsername()%>" method="post"
+		<form action="upload.jsp" method="post"
 			name="form" enctype="multipart/form-data">
-			<input type="file" name="file" id="file" /><br /> <input
-				type="submit" value="Submit" /> <input type="reset" value="Reset" />
+			<input type="file" name="file" id="file" multiple size="80" /><br />
+			<input type="submit" value="Submit" /> <input type="reset"
+				value="Reset" />
 		</form>
 	</fieldset>
 	<%
@@ -156,7 +159,7 @@ div {
 		}
 	%>
 	<div>
-		<a href="history.jsp?username=<%=username%>">History</a>
+		<a href="history.jsp">History</a>
 	</div>
 </body>
 </html>

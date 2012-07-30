@@ -11,39 +11,43 @@ table {
 	border-collapse: collapse;
 	frame: box;
 }
+
+td {
+	border: 1px solid black;
+}
+
+#filename {
+	color: blue;
+}
 </style>
 </head>
 <body>
 	<%
 		String file = request.getParameter("file");
 		String filename = new String(file.getBytes("iso-8859-1"), "GB18030");
-		String username = request.getParameter("username");
 	%>
-	<table border="1">
+	<table>
 		<tr>
 			<td>File name</td>
-			<td style="color: blue;"><%=filename%></td>
+			<td id="filename"><%=filename%></td>
 		</tr>
 	</table>
 	<hr />
 
-	<form name="download"
-		action="download.jsp?file=<%=filename%>&username=<%=username%>"
+	<form name="download" action="download.jsp?file=<%=filename%>"
 		method="POST" enctype="multipart/form-data">
 		<label>Click to download this file</label> <br /> <input
 			type="submit" value="Download" /><br /> <br />
 	</form>
-	
-	<form name="delete"
-		action="delete.jsp?file=<%=filename%>&username=<%=username%>"
+
+	<form name="delete" action="delete.jsp?file=<%=filename%>"
 		method="POST" enctype="multipart/form-data">
 		<label>Click to delete this file</label> <br /> <input type="submit"
-			value="Delete" /><br /><br />
+			value="Delete" /><br /> <br />
 	</form>
 
-	<form name="look"
-		action="look.jsp?file=<%=filename%>&username=<%=username%>"
-		method="POST" enctype="multipart/form-data">
+	<form name="look" action="look.jsp?file=<%=filename%>" method="POST"
+		enctype="multipart/form-data">
 		<label>Click to look this file</label> <br /> <input type="submit"
 			value="Look" /><br />
 	</form>

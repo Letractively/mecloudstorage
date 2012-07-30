@@ -12,14 +12,14 @@
 p {
 	color: blue;
 	text-align: center;
-	fond-size:40px;
+	fond-size: 40px;
 }
 </style>
 </head>
 <body>
 	<%!private static String baseuri = HDFSFileUtil.getBaseuri();%>
 	<%
-		String username = request.getParameter("username");
+		String username = (String) session.getAttribute("username");
 		String file = request.getParameter("file");
 		String filename = new String(file.getBytes("iso-8859-1"), "GB18030");
 		String dir = baseuri + username + "/" + filename;

@@ -22,7 +22,7 @@ body {
 <body>
 	<%!private static String baseuri = HDFSFileUtil.getBaseuri();%>
 	<%
-		String username = request.getParameter("username");
+		String username = (String) session.getAttribute("username");
 		if (ServletFileUpload.isMultipartContent(request)) {
 			try {
 				ServletFileUpload upload = new ServletFileUpload();
