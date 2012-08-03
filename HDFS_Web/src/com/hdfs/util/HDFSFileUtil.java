@@ -74,6 +74,12 @@ public class HDFSFileUtil {
 		fs.close();
 	}
 
+	public boolean rename(String src, String dst) throws IOException {
+		conf = getConfiguration();
+		FileSystem fs = FileSystem.get(URI.create(baseuri), conf);
+		return fs.rename(new Path(src), new Path(dst));
+	}
+
 	/**
 	 * get baseuri.
 	 * 

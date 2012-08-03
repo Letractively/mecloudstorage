@@ -16,7 +16,7 @@ create table log
 	id int auto_increment primary key,
 	username varchar(20) not null,
 	optime datetime not null,
-	action enum("upload", "download", "delete") not null,
-	filename varchar(255) not null,
-	pathname varchar(255) not null
+	action enum("upload", "download", "delete", "rename") not null,
+	filename varchar(2000) not null,
+	pathname varchar(2000) not null
 ) default charset=utf8;

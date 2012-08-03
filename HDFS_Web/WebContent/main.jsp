@@ -28,15 +28,14 @@ h2 {
 }
 
 table {
-	margin: 0px auto;
-	font-size: 20px;
+	margin: 50px auto;
+	font-size: 16px;
 	border-collapse: collapse;
-	frame: box;
+	width: 80%;
 }
 
 tr {
-	vertical-align: top;
-	background-color: LightBlue;
+	background-color: #3DE3F1;
 }
 
 th {
@@ -44,15 +43,16 @@ th {
 	color: white;
 }
 
-.name {
-	text-align: left;
-}
-
 table,th,td {
 	border: 1px solid black;
 }
 
+.altrow {
+	background-color: #A5E5E5;
+}
+
 fieldset {
+	margin-left: 50px;
 	width: 300px;
 }
 
@@ -60,6 +60,13 @@ div {
 	text-align: right;
 }
 </style>
+<script type=""></script>
+<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("tr:odd").addClass("altrow");
+	});
+</script>
 </head>
 <body>
 	<h1>A Cloud Storage System Based On HDFS</h1>
@@ -96,9 +103,8 @@ div {
 			for (int i = 0; i < lst.size(); i++) {
 		%>
 		<tr>
-			<td class="name"><a target="_blank"
-				href="file.jsp?file=<%=lst.get(i).getName()%>">
-					<%=lst.get(i).getName()%></a></td>
+			<td><a target="_blank"
+				href="file.jsp?file=<%=lst.get(i).getName()%>"> <%=lst.get(i).getName()%></a></td>
 			<td><%=lst.get(i).isType() ? "dir" : "file"%></td>
 			<%
 				DecimalFormat df = new DecimalFormat("######0.00");
@@ -119,8 +125,8 @@ div {
 	</table>
 	<fieldset>
 		<legend>File Upload</legend>
-		<form action="upload.jsp" method="post"
-			name="form" enctype="multipart/form-data">
+		<form action="upload.jsp" method="post" name="form"
+			enctype="multipart/form-data">
 			<input type="file" name="file" id="file" multiple size="80" /><br />
 			<input type="submit" value="Submit" /> <input type="reset"
 				value="Reset" />
@@ -138,8 +144,8 @@ div {
 	<br />
 	<fieldset>
 		<legend>File Upload</legend>
-		<form action="upload.jsp" method="post"
-			name="form" enctype="multipart/form-data">
+		<form action="upload.jsp" method="post" name="form"
+			enctype="multipart/form-data">
 			<input type="file" name="file" id="file" multiple size="80" /><br />
 			<input type="submit" value="Submit" /> <input type="reset"
 				value="Reset" />

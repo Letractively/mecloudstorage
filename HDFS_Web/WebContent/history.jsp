@@ -26,15 +26,14 @@ h2 {
 }
 
 table {
-	margin: 0px auto;
-	font-size: 20px;
+	margin: 10px auto;
+	font-size: 16px;
 	border-collapse: collapse;
-	frame: box;
+	width: 80%;
 }
 
 tr {
-	vertical-align: top;
-	background-color: #99CC99;
+	background-color: #3DE3F1;
 }
 
 th {
@@ -45,7 +44,18 @@ th {
 th,td {
 	border: 1px solid black;
 }
+
+.altrow {
+	background-color: #A5E5E5;
+}
 </style>
+<script type=""></script>
+<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("tr:odd").addClass("altrow");
+	});
+</script>
 </head>
 <body>
 	<h1>A Cloud Storage System Based On HDFS</h1>

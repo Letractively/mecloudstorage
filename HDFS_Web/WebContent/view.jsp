@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=GB18030">
-<title>Download File</title>
+<title>View File</title>
 </head>
 <body>
 	<%!private static String baseuri = HDFSFileUtil.getBaseuri();%>

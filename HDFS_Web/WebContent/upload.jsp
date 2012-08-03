@@ -49,7 +49,7 @@ body {
 
 	<script type="text/javascript">
 		alert("File upload successfully!!!");
-		window.history.back(-1);
+		window.history.back();
 	</script>
 </body>
 </html>
