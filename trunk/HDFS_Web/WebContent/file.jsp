@@ -35,21 +35,26 @@ td {
 	<hr />
 
 	<form name="download" action="download.jsp?file=<%=filename%>"
-		method="POST" enctype="multipart/form-data">
+		method="post">
 		<label>Click to download this file</label> <br /> <input
 			type="submit" value="Download" /><br /> <br />
 	</form>
 
 	<form name="delete" action="delete.jsp?file=<%=filename%>"
-		method="POST" enctype="multipart/form-data">
+		method="post">
 		<label>Click to delete this file</label> <br /> <input type="submit"
 			value="Delete" /><br /> <br />
 	</form>
 
-	<form name="look" action="look.jsp?file=<%=filename%>" method="POST"
-		enctype="multipart/form-data">
+	<form name="view" action="view.jsp?file=<%=filename%>" method="post">
 		<label>Click to look this file</label> <br /> <input type="submit"
-			value="Look" /><br />
+			value="View" /><br /> <br />
+	</form>
+
+	<form name="rename" action="rename.jsp?file=<%=filename%>"
+		method="post">
+		<label>New file name</label> <br /> <input type="text" name="rename" />
+		<br /> <input type="submit" value="Rename" />
 	</form>
 </body>
 </html>
