@@ -20,12 +20,17 @@ p {
 	<%!private static String baseuri = HDFSFileUtil.getBaseuri();%>
 	<%
 		String username = (String) session.getAttribute("username");
-		String srcfile = request.getParameter("file");
-		String filename = new String(srcfile.getBytes("iso-8859-1"),
-				"GB18030");
+		String file = request.getParameter("file");
+		String dir = request.getParameter("dir");
+		String filename = new String(file.getBytes("iso-8859-1"), "GB18030");
 		String src = baseuri + username + "/" + filename;
 		String dst = baseuri + username + "/"
 				+ request.getParameter("rename");
+		if (dir != null) {
+			src = baseuri + username + "/" + dir + "/" + filename;
+			dst = baseuri + username + "/" + dir + "/"
+					+ request.getParameter("rename");
+		}
 		HDFSFileUtil hUtil = new HDFSFileUtil();
 		if (hUtil.rename(src, dst)) {
 			LogDao log = new LogDaoImpl();

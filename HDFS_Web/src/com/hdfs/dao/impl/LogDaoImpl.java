@@ -16,7 +16,7 @@ public class LogDaoImpl implements LogDao {
 	ArrayList<Log> logList = new ArrayList<Log>();
 
 	public ArrayList<Log> read(String username) {
-		String sql = "SELECT username, optime, action, filename, pathname FROM log WHERE username = ?";
+		String sql = "SELECT username, optime, action, filename, pathname FROM log WHERE username = ? order by optime desc";
 		DBUtil util = new DBUtil();
 		Connection conn = util.openConnection();
 		try {

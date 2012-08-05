@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=GB18030"
 	pageEncoding="GB18030"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -54,7 +55,7 @@ form {
 		<img src="picture/cloud.png" />
 		<fieldset>
 			<legend>Login</legend>
-			<form action="main.jsp" method="post" name="form">
+			<form action="check_login.jsp" method="post" name="form">
 				<label>Username:</label> <input type="text" name="username"></input>
 				<br /> <label>Password:</label> <input type="password"
 					name="password"></input> <br /> <input type="submit" name="submit"

@@ -23,6 +23,7 @@ body {
 	<%!private static String baseuri = HDFSFileUtil.getBaseuri();%>
 	<%
 		String username = (String) session.getAttribute("username");
+		String dir = request.getParameter("dir");
 		if (ServletFileUpload.isMultipartContent(request)) {
 			try {
 				ServletFileUpload upload = new ServletFileUpload();
@@ -34,8 +35,11 @@ body {
 						BufferedInputStream in = new BufferedInputStream(
 								item.openStream());
 						String homedir = baseuri + username + "/";
+						if (dir != null) {
+							homedir = baseuri + username + "/" + dir + "/";
+						}
 						HDFSFileUtil hUtil = new HDFSFileUtil();
-						hUtil.upload(username, in, filename);
+						hUtil.upload(homedir, in, filename);
 						LogDao log = new LogDaoImpl();
 						log.write(username, "upload", filename, homedir
 								+ filename);
@@ -46,7 +50,6 @@ body {
 			}
 		}
 	%>
-
 	<script type="text/javascript">
 		alert("File upload successfully!!!");
 		window.history.back();

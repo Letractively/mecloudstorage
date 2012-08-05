@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=GB18030"
 	pageEncoding="GB18030"%>
-<%@ page import="com.hdfs.dao.LoginDao"%>
-<%@ page import="com.hdfs.dao.impl.LoginDaoImpl"%>
 <%@ page import="com.hdfs.util.HDFSFileUtil"%>
 <%@ page import="com.hdfs.pojo.*"%>
 <%@ page import="java.util.*"%>
@@ -23,15 +21,21 @@ h1 {
 	text-align: center;
 }
 
-h2 {
-	text-align: center;
+p {
+	margin-right: 50px;
+	margin-top: 0px;
+	text-align: right;
+}
+
+span {
+	color: blue;
 }
 
 table {
-	margin: 50px auto;
+	margin: 0px auto;
 	font-size: 16px;
 	border-collapse: collapse;
-	width: 80%;
+	width: 90%;
 }
 
 tr {
@@ -43,12 +47,8 @@ th {
 	color: white;
 }
 
-table,th,td {
-	border: 1px solid black;
-}
-
 .altrow {
-	background-color: #A5E5E5;
+	background-color: #10C8EB;
 }
 
 fieldset {
@@ -56,8 +56,27 @@ fieldset {
 	width: 300px;
 }
 
-div {
+img {
+	width: 16px;
+	height: 16px;
+}
+
+a {
+	text-decoration: none;
+}
+
+#summary{
+	margin-bottom: 0px;
+}
+
+#directory{
+	color: blue;
+	background-color: white;
+}
+
+#history{
 	text-align: right;
+	background-color: white;
 }
 </style>
 <script type=""></script>
@@ -72,21 +91,67 @@ div {
 	<h1>A Cloud Storage System Based On HDFS</h1>
 	<%!private static String baseuri = HDFSFileUtil.getBaseuri();%>
 	<%
-		LoginDao dao = new LoginDaoImpl();
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-		session.setAttribute("username", username);
-		if (username != "" && password != "") {
-			User u = dao.login(username, password);
-			if (u != null) {
-				String homedir = baseuri + u.getUsername() + "/";
-				HDFSFileUtil hUtil = new HDFSFileUtil();
-				ArrayList<FileObj> lst = hUtil.getList(homedir);
-				if (lst.size() != 0) {
+		String username = (String) session.getAttribute("username");
+			String dir = request.getParameter("dir");
+			if (username != null) {
+		String homedir = baseuri + username + "/";
+		if(dir != null){
+			homedir = baseuri + username + "/" + dir + "/";}
+		HDFSFileUtil hUtil = new HDFSFileUtil();
+		ArrayList<FileObj> lst = hUtil.getList(homedir);
+		if (lst.size() != 0) {
 	%>
+	<p>
+		Welcome <a href="userinfo.jsp"><%=username%></a>,
+		<script type="text/javascript">
+			var oMyDate = new Date();
+			var iYear = oMyDate.getFullYear();
+			var iMonth = oMyDate.getMonth() + 1; //月份是从0开始的
+			var iDate = oMyDate.getDate();
+			var iDay = oMyDate.getDay();
+			switch (iDay) {
+			case 0:
+				iDay = "Sunday";
+				break;
+			case 1:
+				iDay = "Monday";
+				break;
+			case 2:
+				iDay = "Tuesday";
+				break;
+			case 3:
+				iDay = "Wednesday";
+				break;
+			case 4:
+				iDay = "Thursday";
+				break;
+			case 5:
+				iDay = "Friday";
+				break;
+			case 6:
+				iDay = "Satday";
+				break;
+			default:
+				iDay = "error";
+			}
+			document.write("Today is " + iYear + "/" + iMonth + "/" + iDate
+					+ "," + iDay);
+		</script>
+	</p>
 
-	<h2><%=u.getUsername().toUpperCase()%>'s Home Directory
-	</h2>
+	<table id="summary">
+		<tr>
+			<td id="directory">Directory:
+			<%
+			if(dir != null) {
+			out.write("/" + dir);		
+				}else{
+			out.write("/");
+				}
+		%></td>
+			<td id="history"><a href="history.jsp">History</a></td>
+		</tr>
+	</table>
 	<table>
 		<tr>
 			<th>Name</th>
@@ -103,17 +168,43 @@ div {
 			for (int i = 0; i < lst.size(); i++) {
 		%>
 		<tr>
-			<td><a target="_blank"
+			<%
+				if(lst.get(i).isType()){
+								if(dir == null){
+			%>
+			<td><img src="picture/folder.png" /><a
+				href="main.jsp?dir=<%=lst.get(i).getName()%>"> <%=lst.get(i).getName()%></a></td>
+			<%
+				}else{
+			%>
+			<td><img src="picture/folder.png" /><a
+				href="main.jsp?dir=<%=dir +"/" + lst.get(i).getName()%>"> <%=lst.get(i).getName()%></a></td>
+			<%
+				}
+			%>
+			<%
+				}else{
+								if(dir == null){
+			%>
+			<td><img src="picture/file.png" /><a target="_blank"
 				href="file.jsp?file=<%=lst.get(i).getName()%>"> <%=lst.get(i).getName()%></a></td>
+			<%
+				}else{
+			%>
+			<td><img src="picture/file.png" /><a target="_blank"
+				href="file.jsp?dir=<%=dir%>&file=<%=lst.get(i).getName()%>"> <%=lst.get(i).getName()%></a></td>
+			<%
+				}}
+			%>
 			<td><%=lst.get(i).isType() ? "dir" : "file"%></td>
 			<%
 				DecimalFormat df = new DecimalFormat("######0.00");
 			%>
 			<td><%=df.format((double) lst.get(i).getSize()
-									/ (double) (1024 * 1024))%> Mb</td>
+								/ (double) (1024 * 1024))%> Mb</td>
 			<td><%=lst.get(i).getReplication()%></td>
 			<td><%=(double) lst.get(i).getBlock_size()
-									/ (double) (1024 * 1024)%> Mb</td>
+								/ (double) (1024 * 1024)%> Mb</td>
 			<td><%=new Date(lst.get(i).getMtime())%></td>
 			<td><%=lst.get(i).getPermission()%></td>
 			<td><%=lst.get(i).getOwner()%></td>
@@ -123,6 +214,21 @@ div {
 			%>
 		
 	</table>
+	<%
+		if(dir != null) {
+	%>
+	<fieldset>
+		<legend>File Upload</legend>
+		<form action="upload.jsp?dir=<%=dir%>" method="post" name="form"
+			enctype="multipart/form-data">
+			<input type="file" name="file" id="file" multiple size="80" /><br />
+			<input type="submit" value="Submit" /> <input type="reset"
+				value="Reset" />
+		</form>
+	</fieldset>
+	<%
+		}else{
+	%>
 	<fieldset>
 		<legend>File Upload</legend>
 		<form action="upload.jsp" method="post" name="form"
@@ -132,6 +238,9 @@ div {
 				value="Reset" />
 		</form>
 	</fieldset>
+	<%
+		}
+	%>
 	<%
 		} else {
 	%>
@@ -155,17 +264,12 @@ div {
 		}
 			} else {
 	%>
-	<p>Username or Password is error, please try again.</p>
-	<%
-		}
-		} else {
-	%>
-	<p>Username or Password is needed, please input them.</p>
+	<script type="text/javascript">
+		alert("You must login first!");
+		top.location = "index.jsp";
+	</script>
 	<%
 		}
 	%>
-	<div>
-		<a href="history.jsp">History</a>
-	</div>
 </body>
 </html>

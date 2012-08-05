@@ -40,10 +40,9 @@ public class HDFSFileUtil {
 	 * upload
 	 * 
 	 */
-	public void upload(String username, BufferedInputStream in, String fileName)
+	public void upload(String homedir, BufferedInputStream in, String fileName)
 			throws IOException {
 		conf = getConfiguration();
-		String homedir = baseuri + username + "/";
 		FileSystem fs = FileSystem.get(URI.create(homedir), conf);
 		BufferedOutputStream out = new BufferedOutputStream(fs.create(new Path(
 				homedir + fileName)));
@@ -54,12 +53,11 @@ public class HDFSFileUtil {
 	 * stream download
 	 * 
 	 */
-	public InputStream download(String username, String filename)
+	public InputStream download(String homedir)
 			throws IOException {
 		conf = getConfiguration();
-		String remote = baseuri + username + "/" + filename;
 		FileSystem fs = FileSystem.get(URI.create(baseuri), conf);
-		InputStream in = fs.open(new Path(remote));
+		InputStream in = fs.open(new Path(homedir));
 		return in;
 	}
 
