@@ -26,10 +26,10 @@ h2 {
 }
 
 table {
-	margin: 10px auto;
+	margin: 0px auto;
 	font-size: 16px;
 	border-collapse: collapse;
-	width: 80%;
+	width: 90%;
 }
 
 tr {
@@ -41,12 +41,8 @@ th {
 	color: white;
 }
 
-th,td {
-	border: 1px solid black;
-}
-
 .altrow {
-	background-color: #A5E5E5;
+	background-color: #10C8EB;
 }
 </style>
 <script type=""></script>
@@ -66,7 +62,7 @@ th,td {
 		loglist = log.read(username);
 		if (loglist != null && loglist.size() != 0) {
 	%>
-	<h2><%=username.toUpperCase()%>'s Opereation history
+	<h2><%=username%>'s opereation history
 	</h2>
 
 	<table>

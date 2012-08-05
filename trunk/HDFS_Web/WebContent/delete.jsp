@@ -21,14 +21,21 @@ p {
 	<%
 		String username = (String) session.getAttribute("username");
 		String file = request.getParameter("file");
+		String dir = request.getParameter("dir");
 		String filename = new String(file.getBytes("iso-8859-1"), "GB18030");
-		String dir = baseuri + username + "/" + filename;
+		String homedir = baseuri + username + "/" + filename;
+		if (dir != null) {
+			homedir = baseuri + username + "/" + dir + "/" + filename;
+		}
 		HDFSFileUtil hUtil = new HDFSFileUtil();
-		hUtil.delete(dir);
+		hUtil.delete(homedir);
 		LogDao log = new LogDaoImpl();
-		log.write(username, "delete", filename, dir);
+		log.write(username, "delete", filename, homedir);
 	%>
-	<p>File delete successfully!!!</p>
+	<script type="text/javascript">
+		alert("File delete successfully!!!");
+		window.history.back();
+	</script>
 
 </body>
 </html>

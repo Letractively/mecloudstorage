@@ -24,6 +24,7 @@ td {
 <body>
 	<%
 		String file = request.getParameter("file");
+		String dir = request.getParameter("dir");
 		String filename = new String(file.getBytes("iso-8859-1"), "GB18030");
 	%>
 	<table>
@@ -33,13 +34,39 @@ td {
 		</tr>
 	</table>
 	<hr />
+	<%
+		if (dir != null) {
+	%>
+	<form name="download"
+		action="download.jsp?dir=<%=dir%>&file=<%=filename%>" method="post">
+		<label>Click to download this file</label> <br /> <input
+			type="submit" value="Download" /><br /> <br />
+	</form>
+	<form name="delete" action="delete.jsp?dir=<%=dir%>&file=<%=filename%>"
+		method="post">
+		<label>Click to delete this file</label> <br /> <input type="submit"
+			value="Delete" /><br /> <br />
+	</form>
 
+	<form name="view" action="view.jsp?dir=<%=dir%>&file=<%=filename%>"
+		method="post">
+		<label>Click to look this file</label> <br /> <input type="submit"
+			value="View" /><br /> <br />
+	</form>
+
+	<form name="rename" action="rename.jsp?dir=<%=dir%>&file=<%=filename%>"
+		method="post">
+		<label>New file name</label> <br /> <input type="text" name="rename" />
+		<br /> <input type="submit" value="Rename" />
+	</form>
+	<%
+		} else {
+	%>
 	<form name="download" action="download.jsp?file=<%=filename%>"
 		method="post">
 		<label>Click to download this file</label> <br /> <input
 			type="submit" value="Download" /><br /> <br />
 	</form>
-
 	<form name="delete" action="delete.jsp?file=<%=filename%>"
 		method="post">
 		<label>Click to delete this file</label> <br /> <input type="submit"
@@ -56,5 +83,10 @@ td {
 		<label>New file name</label> <br /> <input type="text" name="rename" />
 		<br /> <input type="submit" value="Rename" />
 	</form>
+	<%
+		}
+	%>
+
+
 </body>
 </html>
