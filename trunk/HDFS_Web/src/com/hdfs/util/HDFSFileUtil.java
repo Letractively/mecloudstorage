@@ -53,8 +53,7 @@ public class HDFSFileUtil {
 	 * stream download
 	 * 
 	 */
-	public InputStream download(String homedir)
-			throws IOException {
+	public InputStream download(String homedir) throws IOException {
 		conf = getConfiguration();
 		FileSystem fs = FileSystem.get(URI.create(baseuri), conf);
 		InputStream in = fs.open(new Path(homedir));
@@ -72,10 +71,24 @@ public class HDFSFileUtil {
 		fs.close();
 	}
 
+	/**
+	 * rename
+	 * 
+	 */
 	public boolean rename(String src, String dst) throws IOException {
 		conf = getConfiguration();
 		FileSystem fs = FileSystem.get(URI.create(baseuri), conf);
 		return fs.rename(new Path(src), new Path(dst));
+	}
+
+	/**
+	 * mkdirs
+	 * 
+	 */
+	public boolean mkdirs(String path) throws IOException {
+		conf = getConfiguration();
+		FileSystem fs = FileSystem.get(URI.create(baseuri), conf);
+		return fs.mkdirs(new Path(path));
 	}
 
 	/**

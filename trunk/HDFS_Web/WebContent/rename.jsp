@@ -37,7 +37,10 @@ p {
 			log.write(username, "rename", filename, src + " => " + dst);
 		}
 	%>
-	<p>File rename successfully!!!</p>
+	<script type="text/javascript">
+		alert("File rename successfully!!!");
+		window.history.back();
+	</script>
 
 </body>
 </html>
