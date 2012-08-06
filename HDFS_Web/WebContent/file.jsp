@@ -6,6 +6,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=GB18030">
 <title>File Operation</title>
 <style type="text/css">
+body {
+	background-image: url('picture/gradient.png');
+	background-repeat: repeat-x;
+}
+
+h1 {
+	color: green;
+	font-family: sans-serif;
+	text-align: center;
+}
+
 table {
 	font-size: 20px;
 	border-collapse: collapse;
@@ -22,6 +33,7 @@ td {
 </style>
 </head>
 <body>
+	<h1>A Cloud Storage System Based On HDFS</h1>
 	<%
 		String file = request.getParameter("file");
 		String dir = request.getParameter("dir");
