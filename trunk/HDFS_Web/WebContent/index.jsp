@@ -6,20 +6,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=GB18030">
 <title>A cloud storage based on HDFS</title>
+<link rel="stylesheet" type="text/css" href="css/cloud.css" />
 <style type="text/css">
-body {
-	background-image: url('picture/gradient.png');
-	background-repeat: repeat-x;
-}
-
 #div1 {
 	text-align: right;
-}
-
-h1 {
-	color: green;
-	font-family: sans-serif;
-	text-align: center;
 }
 
 #div2 {

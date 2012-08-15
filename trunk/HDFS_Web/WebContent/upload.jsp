@@ -11,13 +11,7 @@
 <html>
 <head>
 <title>Upload a file to HDFS</title>
-<style type="text/css">
-body {
-	text-align: center;
-	background-color: #87CEEB;
-	font-size: 20px;
-}
-</style>
+<link rel="stylesheet" type="text/css" href="css/cloud.css" />
 </head>
 <body>
 	<%!private static String baseuri = HDFSFileUtil.getBaseuri();%>

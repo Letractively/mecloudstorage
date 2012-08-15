@@ -8,12 +8,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=GB18030">
 <title>Rename File</title>
+<link rel="stylesheet" type="text/css" href="css/cloud.css" />
 <style type="text/css">
-p {
-	color: blue;
-	text-align: center;
-	fond-size: 40px;
-}
 </style>
 </head>
 <body>

@@ -9,12 +9,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Check Login</title>
-<style type="text/css">
-body {
-	background-image: url('picture/gradient.png');
-	background-repeat: repeat-x;
-}
-</style>
+<link rel="stylesheet" type="text/css" href="css/cloud.css" />
 </head>
 <body>
 	<%
