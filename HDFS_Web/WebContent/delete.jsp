@@ -8,13 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=GB18030">
 <title>Delete File</title>
-<style type="text/css">
-p {
-	color: blue;
-	text-align: center;
-	fond-size: 40px;
-}
-</style>
+<link rel="stylesheet" type="text/css" href="css/cloud.css" />
 </head>
 <body>
 	<%!private static String baseuri = HDFSFileUtil.getBaseuri();%>

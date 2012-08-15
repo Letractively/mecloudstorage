@@ -24,15 +24,16 @@ public class HDFSFileUtil {
 	/**
 	 * get files status.
 	 */
-	public ArrayList<FileObj> getList(String home) throws IOException {
-		FileSystem fs = FileSystem.get(URI.create(home), new Configuration());
-		FileStatus[] status = fs.listStatus(new Path(home));
+	public ArrayList<FileObj> getList(String dir) throws IOException {
+		FileSystem fs = getfs();
+		FileStatus[] status = fs.listStatus(new Path(dir));
 		ArrayList<FileObj> results = new ArrayList<FileObj>();
 		if (status != null) {
 			for (int i = 0; i < status.length; i++) {
 				results.add(new FileObj(status[i]));
 			}
 		}
+		fs.close();
 		return results;
 	}
 
@@ -40,23 +41,22 @@ public class HDFSFileUtil {
 	 * upload
 	 * 
 	 */
-	public void upload(String homedir, BufferedInputStream in, String fileName)
+	public void upload(String dir, BufferedInputStream in, String filename)
 			throws IOException {
-		conf = getConfiguration();
-		FileSystem fs = FileSystem.get(URI.create(homedir), conf);
+		FileSystem fs = getfs();
 		BufferedOutputStream out = new BufferedOutputStream(fs.create(new Path(
-				homedir + fileName)));
+				dir + filename)));
 		IOUtils.copyBytes(in, out, 4096, true);
+		fs.close();
 	}
 
 	/**
 	 * stream download
 	 * 
 	 */
-	public InputStream download(String homedir) throws IOException {
-		conf = getConfiguration();
-		FileSystem fs = FileSystem.get(URI.create(baseuri), conf);
-		InputStream in = fs.open(new Path(homedir));
+	public InputStream download(String filename) throws IOException {
+		FileSystem fs = getfs();
+		InputStream in = fs.open(new Path(filename));
 		return in;
 	}
 
@@ -65,8 +65,7 @@ public class HDFSFileUtil {
 	 * 
 	 */
 	public void delete(String file) throws FileNotFoundException, IOException {
-		conf = getConfiguration();
-		FileSystem fs = FileSystem.get(URI.create(baseuri), conf);// URI.create(xxx)
+		FileSystem fs = getfs();
 		fs.deleteOnExit(new Path(file));
 		fs.close();
 	}
@@ -76,8 +75,7 @@ public class HDFSFileUtil {
 	 * 
 	 */
 	public boolean rename(String src, String dst) throws IOException {
-		conf = getConfiguration();
-		FileSystem fs = FileSystem.get(URI.create(baseuri), conf);
+		FileSystem fs = getfs();
 		return fs.rename(new Path(src), new Path(dst));
 	}
 
@@ -86,8 +84,7 @@ public class HDFSFileUtil {
 	 * 
 	 */
 	public boolean mkdirs(String path) throws IOException {
-		conf = getConfiguration();
-		FileSystem fs = FileSystem.get(URI.create(baseuri), conf);
+		FileSystem fs = getfs();
 		return fs.mkdirs(new Path(path));
 	}
 
@@ -103,10 +100,17 @@ public class HDFSFileUtil {
 	 * get configuration.
 	 * 
 	 */
-	private static Configuration getConfiguration() {
+	private static FileSystem getfs() {
 		if (conf == null) {
 			conf = new Configuration();
 		}
-		return conf;
+		FileSystem fs = null;
+		try {
+			fs = FileSystem.get(URI.create(baseuri), conf);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return fs;
 	}
 }

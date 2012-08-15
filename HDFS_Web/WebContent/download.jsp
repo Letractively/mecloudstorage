@@ -9,6 +9,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=GB18030">
 <title>Download File</title>
+<link rel="stylesheet" type="text/css" href="css/cloud.css" />
 </head>
 <body>
 	<%!private static String baseuri = HDFSFileUtil.getBaseuri();%>

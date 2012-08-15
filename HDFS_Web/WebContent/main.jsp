@@ -9,18 +9,8 @@
 <head>
 <meta charset="UTF-8">
 <title>File Browse</title>
+<link rel="stylesheet" type="text/css" href="css/cloud.css" />
 <style type="text/css">
-body {
-	background-image: url('picture/gradient.png');
-	background-repeat: repeat-x;
-}
-
-h1 {
-	color: green;
-	font-family: sans-serif;
-	text-align: center;
-}
-
 p {
 	text-align: right;
 }
@@ -138,24 +128,24 @@ a {
 	</p>
 	<h1>A Cloud Storage System Based On HDFS</h1>
 	<%
-			String dir = request.getParameter("dir");
-			if (username != null) {
-		String homedir = baseuri + username + "/";
-		if(dir != null){
-			homedir = baseuri + username + "/" + dir + "/";}
-		HDFSFileUtil hUtil = new HDFSFileUtil();
-		ArrayList<FileObj> lst = hUtil.getList(homedir);
-		if (lst.size() != 0) {
+		String dir = request.getParameter("dir");
+		if (username != null) {
+			String homedir = baseuri + username + "/";
+			if(dir != null){
+		homedir = baseuri + username + "/" + dir + "/";}
+			HDFSFileUtil hUtil = new HDFSFileUtil();
+			ArrayList<FileObj> lst = hUtil.getList(homedir);
+			if (lst.size() != 0) {
 	%>
-	
+
 	<table id="summary">
 		<tr>
 			<td id="directory">Directory: <%
 				if(dir != null) {
-						out.write("/" + dir);		
-							}else{
-						out.write("/");
-							}
+					out.write("/" + dir);		
+				}else{
+					out.write("/");
+				}
 			%></td>
 			<td id="history">
 				<%
@@ -165,13 +155,13 @@ a {
 					<label>Create new folder: </label><input type="text" name="new" />
 					<input type="submit" value="Create" />
 				</form> <%
- 	}else{
+ 					}else{
  %>
 				<form action="create.jsp" method="post">
 					<label>Create new folder: </label><input type="text" name="new" />
 					<input type="submit" value="Create" />
 				</form> <%
- 	}
+ 					}
  %> <a href="history.jsp"> History</a>
 			</td>
 		</tr>
@@ -194,7 +184,7 @@ a {
 		<tr>
 			<%
 				if(lst.get(i).isType()){
-								if(dir == null){
+					if(dir == null){
 			%>
 			<td id="name"><img src="picture/folder.png" /><a
 				href="main.jsp?dir=<%=lst.get(i).getName()%>"> <%=lst.get(i).getName()%></a></td>
@@ -208,7 +198,7 @@ a {
 			%>
 			<%
 				}else{
-								if(dir == null){
+					if(dir == null){
 			%>
 			<td id="name"><img src="picture/file.png" /><a target="_blank"
 				href="file.jsp?file=<%=lst.get(i).getName()%>"> <%=lst.get(i).getName()%></a></td>
@@ -304,7 +294,7 @@ a {
 	%>
 	<%
 		}
-		} else {
+			} else {
 	%>
 	<script type="text/javascript">
 		alert("You must login first!");
