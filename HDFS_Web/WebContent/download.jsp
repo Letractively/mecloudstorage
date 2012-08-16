@@ -15,6 +15,14 @@
 	<%!private static String baseuri = HDFSFileUtil.getBaseuri();%>
 	<%
 		String username = (String) session.getAttribute("username");
+		if(username == null){
+	%>
+	<script type="text/javascript">
+		alert("You must login first!");
+		top.location = "index.jsp";
+	</script>
+	<%
+		}
 		String file = request.getParameter("file");
 		String dir = request.getParameter("dir");
 		String filename = new String(file.getBytes("iso-8859-1"), "GB18030");

@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=GB18030"
+	pageEncoding="GB18030"%>
 <%@ page import="com.hdfs.util.HDFSFileUtil"%>
 <%@ page import="com.hdfs.dao.LogDao"%>
 <%@ page import="com.hdfs.dao.impl.LogDaoImpl"%>
@@ -12,8 +12,16 @@
 </head>
 <body>
 	<%!private static String baseuri = HDFSFileUtil.getBaseuri();%>
-	<%
+		<%
 		String username = (String) session.getAttribute("username");
+		if(username == null){
+	%>
+	<script type="text/javascript">
+		alert("You must login first!");
+		top.location = "index.jsp";
+	</script>
+	<%
+		}
 		String folder = request.getParameter("new");
 		String dir = request.getParameter("dir");
 		String foldername = new String(folder.getBytes("iso-8859-1"), "GB18030");

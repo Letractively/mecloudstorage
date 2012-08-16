@@ -33,7 +33,6 @@ public class HDFSFileUtil {
 				results.add(new FileObj(status[i]));
 			}
 		}
-		fs.close();
 		return results;
 	}
 
