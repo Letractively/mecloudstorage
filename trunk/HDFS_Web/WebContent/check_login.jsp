@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=GB18030"
+	pageEncoding="GB18030"%>
 <%@ page import="com.hdfs.util.HDFSFileUtil"%>
 <%@ page import="com.hdfs.dao.UserDao"%>
 <%@ page import="com.hdfs.dao.impl.UserDaoImpl"%>

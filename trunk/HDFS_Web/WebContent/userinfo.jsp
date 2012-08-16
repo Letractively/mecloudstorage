@@ -14,6 +14,14 @@
 	<h1>A Cloud Storage System Based On HDFS</h1>
 	<%
 		String username = (String) session.getAttribute("username");
+		if(username == null){
+	%>
+	<script type="text/javascript">
+		alert("You must login first!");
+		top.location = "index.jsp";
+	</script>
+	<%
+		}
 		UserDao dao = new UserDaoImpl();
 		User u = dao.getinfo(username);
 	%>

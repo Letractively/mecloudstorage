@@ -6,30 +6,24 @@
 <meta http-equiv="Content-Type" content="text/html; charset=GB18030">
 <title>File Operation</title>
 <link rel="stylesheet" type="text/css" href="css/cloud.css" />
-<style type="text/css">
-table {
-	font-size: 20px;
-	border-collapse: collapse;
-	frame: box;
-}
-
-td {
-	border: 1px solid black;
-}
-
-#filename {
-	color: blue;
-}
-</style>
 </head>
 <body>
 	<h1>A Cloud Storage System Based On HDFS</h1>
 	<%
+		String username = (String) session.getAttribute("username");
+		if (username == null) {
+	%>
+	<script type="text/javascript">
+		alert("You must login first!");
+		top.location = "index.jsp";
+	</script>
+	<%
+		}
 		String file = request.getParameter("file");
 		String dir = request.getParameter("dir");
 		String filename = new String(file.getBytes("iso-8859-1"), "GB18030");
 	%>
-	<table>
+	<table id="file_table">
 		<tr>
 			<td>File name</td>
 			<td id="filename"><%=filename%></td>
@@ -50,7 +44,7 @@ td {
 			value="Delete" /><br /> <br />
 	</form>
 
-	<form name="view" action="view.jsp?dir=<%=dir%>&file=<%=filename%>"
+	<form name="view" action="testinclude.jsp?dir=<%=dir%>&file=<%=filename%>"
 		method="post">
 		<label>Click to look this file</label> <br /> <input type="submit"
 			value="View" /><br /> <br />
@@ -75,7 +69,7 @@ td {
 			value="Delete" /><br /> <br />
 	</form>
 
-	<form name="view" action="view.jsp?file=<%=filename%>" method="post">
+	<form name="view" action="testinclude.jsp?file=<%=filename%>" method="post">
 		<label>Click to look this file</label> <br /> <input type="submit"
 			value="View" /><br /> <br />
 	</form>

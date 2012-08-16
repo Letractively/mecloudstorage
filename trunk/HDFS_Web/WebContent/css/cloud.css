@@ -8,3 +8,117 @@ h1 {
 	font-family: sans-serif;
 	text-align: center;
 }
+
+h2 {
+	text-align: center;
+}
+
+#cloud {
+	width: 600px;
+	height: 316px;
+}
+
+a {
+	text-decoration: none;
+}
+
+#index_a {
+	display: block;
+	text-decoration: underline;
+	text-align: right;
+}
+
+#index_div2 {
+	text-align: center;
+	position: relative;
+	top: 80px;
+}
+
+#index_fieldset {
+	text-align: left;
+	margin: 0px auto;
+	width: 300px;
+	position: relative;
+	top: -180px;
+}
+
+#index_form {
+	text-align: center;
+}
+
+#welcome {
+	text-align: right;
+}
+
+.content,#summary {
+	margin: 0px auto;
+	font-size: 16px;
+	border-collapse: collapse;
+	width: 90%;
+}
+
+tr {
+	background-color: #3DE3F1;
+}
+
+th {
+	background-color: green;
+	color: white;
+}
+
+tr td {
+	text-align: center;
+}
+
+#name {
+	text-align: left;
+}
+
+.altrow {
+	background-color: #10C8EB;
+}
+
+#directory {
+	color: blue;
+	background-color: white;
+	text-align: left;
+}
+
+.icon {
+	width: 16px;
+	height: 16px;
+}
+
+#history {
+	text-align: right;
+	background-color: white;
+}
+
+.upload {
+	margin-left: 50px;
+	width: 300px;
+}
+
+#file_table {
+	font-size: 20px;
+	border-collapse: collapse;
+	frame: box;
+}
+
+#file_table td {
+	border: 1px solid black;
+}
+
+#filename {
+	color: blue;
+}
+
+#register_fieldset {
+	text-align: left;
+	margin: 0px auto;
+	width: 300px;
+}
+
+#register_form {
+	text-align: center;
+}

@@ -10,31 +10,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=GB18030">
 <title>History</title>
 <link rel="stylesheet" type="text/css" href="css/cloud.css" />
-<style type="text/css">
-h2 {
-	text-align: center;
-}
-
-table {
-	margin: 0px auto;
-	font-size: 16px;
-	border-collapse: collapse;
-	width: 90%;
-}
-
-tr {
-	background-color: #3DE3F1;
-}
-
-th {
-	background-color: blue;
-	color: white;
-}
-
-.altrow {
-	background-color: #10C8EB;
-}
-</style>
 <script type=""></script>
 <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript">
@@ -47,6 +22,14 @@ th {
 	<h1>A Cloud Storage System Based On HDFS</h1>
 	<%
 		String username = (String) session.getAttribute("username");
+		if(username == null){
+	%>
+	<script type="text/javascript">
+		alert("You must login first!");
+		top.location = "index.jsp";
+	</script>
+	<%
+		}
 		LogDao log = new LogDaoImpl();
 		ArrayList<Log> loglist = new ArrayList<Log>();
 		loglist = log.read(username);
@@ -55,7 +38,7 @@ th {
 	<h2><%=username%>'s opereation history
 	</h2>
 
-	<table>
+	<table class="content">
 		<tr>
 			<th>Username</th>
 			<th>Time</th>
