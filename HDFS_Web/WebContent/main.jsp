@@ -123,12 +123,12 @@
 					if(lst.get(i).isType()){
 						if(dir == null){
 			%>
-			<td id="name"><img class="icon" src="picture/folder.png" /><a
+			<td id="name"><img class="icon" src="images/folder.png" /><a
 				href="main.jsp?dir=<%=lst.get(i).getName()%>"> <%=lst.get(i).getName()%></a></td>
 			<%
 						}else{
 			%>
-			<td id="name"><img class="icon" src="picture/folder.png" /><a
+			<td id="name"><img class="icon" src="images/folder.png" /><a
 				href="main.jsp?dir=<%=dir +"/" + lst.get(i).getName()%>"> <%=lst.get(i).getName()%></a></td>
 			<%
 						}
@@ -137,12 +137,12 @@
 					}else{
 						if(dir == null){
 			%>
-			<td id="name"><img class="icon" src="picture/file.png" /><a target="_blank"
+			<td id="name"><img class="icon" src="images/file.png" /><a target="_blank"
 				href="file.jsp?file=<%=lst.get(i).getName()%>"> <%=lst.get(i).getName()%></a></td>
 			<%
 						}else{
 			%>
-			<td id="name"><img class="icon" src="picture/file.png" /><a target="_blank"
+			<td id="name"><img class="icon" src="images/file.png" /><a target="_blank"
 				href="file.jsp?dir=<%=dir%>&file=<%=lst.get(i).getName()%>"> <%=lst.get(i).getName()%></a></td>
 			<%
 						}

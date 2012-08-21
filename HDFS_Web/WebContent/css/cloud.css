@@ -1,10 +1,10 @@
 body {
-	background-image: url('../picture/gradient.png');
+	background-image: url('../images/background.jpg');
 	background-repeat: repeat-x;
 }
 
 h1 {
-	color: green;
+	color: white;
 	font-family: sans-serif;
 	text-align: center;
 }
@@ -80,7 +80,7 @@ tr td {
 
 #directory {
 	color: blue;
-	background-color: white;
+	background-color: #9EADFA;
 	text-align: left;
 }
 
@@ -91,7 +91,7 @@ tr td {
 
 #history {
 	text-align: right;
-	background-color: white;
+	background-color: #9EADFA;
 }
 
 .upload {

@@ -44,7 +44,7 @@
 			value="Delete" /><br /> <br />
 	</form>
 
-	<form name="view" action="testinclude.jsp?dir=<%=dir%>&file=<%=filename%>"
+	<form name="view" action="testinclude2.jsp?dir=<%=dir%>&file=<%=filename%>"
 		method="post">
 		<label>Click to look this file</label> <br /> <input type="submit"
 			value="View" /><br /> <br />
@@ -69,7 +69,7 @@
 			value="Delete" /><br /> <br />
 	</form>
 
-	<form name="view" action="testinclude.jsp?file=<%=filename%>" method="post">
+	<form name="view" action="testinclude2.jsp?file=<%=filename%>" method="post">
 		<label>Click to look this file</label> <br /> <input type="submit"
 			value="View" /><br /> <br />
 	</form>
