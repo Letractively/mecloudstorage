@@ -26,7 +26,7 @@ iframe {
 		String dir = request.getParameter("dir");
 		if (dir != null) {
 	%>
-	<iframe src="view.jsp?dir=<%=dir%>&file=<%=file%>"></iframe>
+	<img src="view.jsp?dir=<%=dir%>&file=<%=file%>"></img>
 	<br>
 	<button type="button">Previous</button>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -34,7 +34,7 @@ iframe {
 	<%
 		} else {
 	%>
-	<iframe src="view.jsp?file=<%=file%>"></iframe>
+	<img src="view.jsp?file=<%=file%>"></img>
 	<br>
 	<button type="button">Previous</button>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
