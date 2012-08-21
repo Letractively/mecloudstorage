@@ -119,6 +119,6 @@ tr td {
 	width: 300px;
 }
 
-#register_form {
+#register_form,#picture {
 	text-align: center;
 }

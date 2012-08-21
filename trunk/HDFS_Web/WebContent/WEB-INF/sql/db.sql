@@ -20,3 +20,11 @@ create table log
 	filename varchar(2000) not null,
 	pathname varchar(2000) not null
 ) default charset=utf8;
+
+#picture table
+create table picture
+(
+	id int auto_increment primary key,
+	username varchar(20) not null,
+	pathname varchar(2000) not null
+) default charset=utf8;

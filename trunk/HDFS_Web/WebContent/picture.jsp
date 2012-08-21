@@ -2,6 +2,8 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="com.hdfs.util.HDFSFileUtil"%>
 <%@ page import="com.hdfs.util.DBUtil"%>
+<%@ page import="com.hdfs.dao.*"%>
+<%@ page import="com.hdfs.dao.impl.*"%>
 <%@ page import="java.sql.*"%>
 <%@ page import="java.util.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -15,35 +17,24 @@
 <script type="text/javascript" src="js/lightbox.js"></script>
 </head>
 <body>
-	<h1>Picture Test</h1>
+
 	<%
+		String username = (String) session.getAttribute("username");
 		ArrayList<String> paths = new ArrayList<String>();
-		String sql = "SELECT pathname FROM log WHERE username=?";
-		DBUtil util = new DBUtil();
-		Connection conn = util.openConnection();
-		try {
-			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, "jack");
-			ResultSet rs = pstmt.executeQuery();
-			while (rs.next()) {
-				String s = rs.getString(1);
-				paths.add(s);
+		PictureDao pic = new PictureDaoImpl();
+		paths = pic.get(username);
+	%>
+	<h1><%=username%>'s Album
+	</h1>
+	<div id="picture">
+		<%
+			for (int i = 0; i < paths.size(); i++) {
+		%>
+		<a href="copic2.jsp?path=<%=paths.get(i)%>" rel="lightbox[pic]"> <img
+			width="200" height="150" src="copic.jsp?path=<%=paths.get(i)%>"></img></a>
+		<%
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			util.closeConnection(conn);
-		}
-	%>
-
-	<%
-		for (int i = 0; i < paths.size(); i++) {
-	%>
-	<a href="viewp.jsp?path=<%=paths.get(i)%>" rel="lightbox[pic]"> <img width="304"
-		height="228" src="viewp.jsp?path=<%=paths.get(i)%>"></img></a>
-	<%
-		}
-	%>
-
+		%>
+	</div>
 </body>
 </html>

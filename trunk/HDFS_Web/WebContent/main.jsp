@@ -99,7 +99,7 @@
 				<%
  					}
  				%> 
- 				<a href="history.jsp"> History</a>
+ 				<a href="picture.jsp">Album</a> | <a href="history.jsp"> History</a>
 			</td>
 		</tr>
 	</table>
