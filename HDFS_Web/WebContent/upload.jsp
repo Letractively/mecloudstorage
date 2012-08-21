@@ -2,8 +2,8 @@
 	pageEncoding="GB18030"%>
 <%@ page import="java.io.BufferedInputStream"%>
 <%@ page import="com.hdfs.util.HDFSFileUtil"%>
-<%@ page import="com.hdfs.dao.LogDao"%>
-<%@ page import="com.hdfs.dao.impl.LogDaoImpl"%>
+<%@ page import="com.hdfs.dao.*"%>
+<%@ page import="com.hdfs.dao.impl.*"%>
 <%@ page import="org.apache.commons.fileupload.*"%>
 <%@ page
 	import="org.apache.commons.fileupload.servlet.ServletFileUpload"%>
@@ -17,7 +17,7 @@
 	<%!private static String baseuri = HDFSFileUtil.getBaseuri();%>
 	<%
 		String username = (String) session.getAttribute("username");
-		if(username == null){
+		if (username == null) {
 	%>
 	<script type="text/javascript">
 		alert("You must login first!");
@@ -45,6 +45,12 @@
 						LogDao log = new LogDaoImpl();
 						log.write(username, "upload", filename, homedir
 								+ filename);
+						int dot = filename.lastIndexOf('.');
+						String type = filename.substring(dot + 1);
+						if (type.equals("jpg") || type.equals("png")) {
+							PictureDao pic = new PictureDaoImpl();
+							pic.insert(username, homedir + filename);
+						}
 					}
 				}
 			} catch (Exception e) {

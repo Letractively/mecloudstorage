@@ -27,18 +27,10 @@ iframe {
 		if (dir != null) {
 	%>
 	<img src="view.jsp?dir=<%=dir%>&file=<%=file%>"></img>
-	<br>
-	<button type="button">Previous</button>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<button type="button">Next</button>
 	<%
 		} else {
 	%>
 	<img src="view.jsp?file=<%=file%>"></img>
-	<br>
-	<button type="button">Previous</button>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<button type="button">Next</button>
 	<%
 		}
 	%>

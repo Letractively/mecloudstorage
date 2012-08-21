@@ -13,7 +13,7 @@
 		<h1>A Cloud Storage System Based On HDFS</h1>
 	</div>
 	<div id="index_div2">
-		<img id="cloud" src="picture/cloud.png" />
+		<img id="cloud" src="images/cloud.png" />
 		<fieldset id="index_fieldset">
 			<legend>Login</legend>
 			<form id="index_form" action="check_login.jsp" method="post"
