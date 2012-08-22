@@ -43,8 +43,8 @@
 			<th>Username</th>
 			<th>Time</th>
 			<th>Action</th>
-			<th>filename</th>
-			<th>filepath</th>
+			<th>Filename</th>
+			<th>Filepath</th>
 		</tr>
 		<%
 			for (int i = 0; i < loglist.size(); i++) {
