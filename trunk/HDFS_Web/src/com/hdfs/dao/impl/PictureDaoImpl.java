@@ -53,6 +53,22 @@ public class PictureDaoImpl implements PictureDao {
 	}
 
 	public boolean delete(String pathname) {
+		String sql = "DELETE FROM picture WHERE pathname=?";
+		DBUtil util = new DBUtil();
+		Connection conn = util.openConnection();
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, pathname);
+			if (pstmt.executeUpdate() > 0) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			util.closeConnection(conn);
+		}
 		return false;
 	}
 }
