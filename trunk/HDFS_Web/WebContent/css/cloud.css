@@ -48,6 +48,7 @@ a {
 
 #welcome {
 	text-align: right;
+	width: 95%
 }
 
 .content,#summary {
@@ -78,9 +79,11 @@ tr td {
 	background-color: #10C8EB;
 }
 
+#dirhis {
+	background-color: transparent;
+}
+
 #directory {
-	color: blue;
-	background-color: #9EADFA;
 	text-align: left;
 }
 
@@ -91,12 +94,11 @@ tr td {
 
 #history {
 	text-align: right;
-	background-color: #9EADFA;
 }
 
 .upload {
-	margin-left: 50px;
-	width: 300px;
+	margin: 20px 5%;
+	width: 15%;
 }
 
 #file_table {
@@ -156,4 +158,8 @@ tr td {
 
 #picture a:hover {
 	background-color: #8ad459;
+}
+
+#viewpicture{
+	text-align: center;
 }
