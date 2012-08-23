@@ -5,7 +5,8 @@ body {
 
 h1 {
 	color: white;
-	font-family: sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 40px;
 	text-align: center;
 }
 
@@ -47,15 +48,18 @@ a {
 }
 
 #welcome {
+	font-size: 13px;
+	font-family: Verdana;
 	text-align: right;
-	width: 95%
+	width: 98%
 }
 
 .content,#summary {
 	margin: 0px auto;
-	font-size: 16px;
+	font-size: 14px;
+	font-family: Verdana;
 	border-collapse: collapse;
-	width: 90%;
+	width: 95%;
 }
 
 tr {
@@ -97,7 +101,8 @@ tr td {
 }
 
 .upload {
-	margin: 20px 5%;
+	font-family: Verdana;
+	margin: 20px 2%;
 	width: 15%;
 }
 
@@ -160,6 +165,11 @@ tr td {
 	background-color: #8ad459;
 }
 
-#viewpicture{
+#viewpicture {
 	text-align: center;
+}
+
+#footer {
+	font-size: 13px;
+	font-family: Verdana;
 }
