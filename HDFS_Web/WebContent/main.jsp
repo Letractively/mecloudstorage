@@ -65,41 +65,38 @@
 		if (username != null) {
 			String homedir = baseuri + username + "/";
 			if(dir != null){
-				homedir = baseuri + username + "/" + dir + "/";}
-				HDFSFileUtil hUtil = new HDFSFileUtil();
-				ArrayList<FileObj> lst = hUtil.getList(homedir);
-				if (lst.size() != 0) {
+		homedir = baseuri + username + "/" + dir + "/";}
+		HDFSFileUtil hUtil = new HDFSFileUtil();
+		ArrayList<FileObj> lst = hUtil.getList(homedir);
+		if (lst.size() != 0) {
 	%>
-	<table id="summary">
-		<tr>
-			<td id="directory">Directory: 
-				<%
-					if(dir != null) {
-						out.write("/" + dir);		
-					}else{
-						out.write("/");
-					}
-				%>
+	<table id="summary" >
+		<tr id="dirhis">
+			<td id="directory" >Directory:
+			<%
+				if(dir != null) {
+								out.write("/" + dir);		
+							}else{
+								out.write("/");
+							}
+			%>
 			</td>
-			<td id="history">
+			<td id="history" >
 				<%
 					if(dir != null){
 				%>
 				<form action="create.jsp?dir=<%=dir%>" method="post">
 					<label>Create new folder: </label><input type="text" name="new" />
 					<input type="submit" value="Create" />
-				</form> 
-				<%
- 					}else{
- 				%>
+				</form> <%
+ 	}else{
+ %>
 				<form action="create.jsp" method="post">
 					<label>Create new folder: </label><input type="text" name="new" />
 					<input type="submit" value="Create" />
-				</form> 
-				<%
- 					}
- 				%> 
- 				<a href="picture.jsp">Album</a> | <a href="history.jsp"> History</a>
+				</form> <%
+ 	}
+ %> <a href="album.jsp">Album</a> | <a href="history.jsp"> History</a>
 			</td>
 		</tr>
 	</table>
@@ -116,37 +113,39 @@
 			<th>Group</th>
 		</tr>
 		<%
-				for (int i = 0; i < lst.size(); i++) {
+			for (int i = 0; i < lst.size(); i++) {
 		%>
 		<tr>
 			<%
-					if(lst.get(i).isType()){
-						if(dir == null){
+				if(lst.get(i).isType()){
+								if(dir == null){
 			%>
 			<td id="name"><img class="icon" src="images/folder.png" /><a
 				href="main.jsp?dir=<%=lst.get(i).getName()%>"> <%=lst.get(i).getName()%></a></td>
 			<%
-						}else{
+				}else{
 			%>
 			<td id="name"><img class="icon" src="images/folder.png" /><a
 				href="main.jsp?dir=<%=dir +"/" + lst.get(i).getName()%>"> <%=lst.get(i).getName()%></a></td>
 			<%
-						}
+				}
 			%>
 			<%
-					}else{
-						if(dir == null){
+				}else{
+								if(dir == null){
 			%>
-			<td id="name"><img class="icon" src="images/file.png" /><a target="_blank"
-				href="file.jsp?file=<%=lst.get(i).getName()%>"> <%=lst.get(i).getName()%></a></td>
+			<td id="name"><img class="icon" src="images/file.png" /><a
+				target="_blank" href="file.jsp?file=<%=lst.get(i).getName()%>">
+					<%=lst.get(i).getName()%></a></td>
 			<%
-						}else{
+				}else{
 			%>
-			<td id="name"><img class="icon" src="images/file.png" /><a target="_blank"
+			<td id="name"><img class="icon" src="images/file.png" /><a
+				target="_blank"
 				href="file.jsp?dir=<%=dir%>&file=<%=lst.get(i).getName()%>"> <%=lst.get(i).getName()%></a></td>
 			<%
-						}
-					}
+				}
+							}
 			%>
 			<td><%=lst.get(i).isType() ? "dir" : "file"%></td>
 			<%
@@ -163,10 +162,11 @@
 			<td><%=lst.get(i).getGroup()%></td>
 			<%
 				}
-			%>	
+			%>
+		
 	</table>
 	<%
-				if(dir != null) {
+		if(dir != null) {
 	%>
 	<fieldset class="upload">
 		<legend>File Upload</legend>
@@ -178,7 +178,7 @@
 		</form>
 	</fieldset>
 	<%
-				}else{
+		}else{
 	%>
 	<fieldset class="upload">
 		<legend>File Upload</legend>
@@ -190,7 +190,7 @@
 		</form>
 	</fieldset>
 	<%
-				}
+		}
 	%>
 	<%
 		} else {
@@ -203,7 +203,7 @@
 	<br />
 	<br />
 	<%
-				if(dir != null) {
+		if(dir != null) {
 	%>
 	<fieldset class="upload">
 		<legend>File Upload</legend>
@@ -215,7 +215,7 @@
 		</form>
 	</fieldset>
 	<%
-				}else{
+		}else{
 	%>
 	<fieldset class="upload">
 		<legend>File Upload</legend>
@@ -227,10 +227,10 @@
 		</form>
 	</fieldset>
 	<%
-				}
+		}
 	%>
 	<%
-			}
+		}
 		} else {
 	%>
 	<script type="text/javascript">
