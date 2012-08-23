@@ -22,6 +22,7 @@
 	<%
 		String username = (String) session.getAttribute("username");
 	%>
+	<div>
 	<p id="welcome">
 		Welcome <a href="userinfo.jsp"><%=username%></a>,
 		<script type="text/javascript">
@@ -60,6 +61,15 @@
 		</script>
 	</p>
 	<h1>A Cloud Storage System Based On HDFS</h1>
+	</div>
+	<div id="menu" style="background-color:#66CC99;font-family: Verdana;height:600px;width:10%;float:left;margin-top: 46px;">
+	<center><b>Menu</b></center><br />
+	<ul>
+	<li><a href="userinfo.jsp">User info</a></li>
+	<li><a href="main.jsp">Main</a></li>
+	<li><a href="album.jsp">Browser Album</a></li>
+	</ul>
+	</div>
 	<%
 		String dir = request.getParameter("dir");
 		if (username != null) {
@@ -70,6 +80,7 @@
 		ArrayList<FileObj> lst = hUtil.getList(homedir);
 		if (lst.size() != 0) {
 	%>
+	<div style="width:90%;float:left;">
 	<table id="summary" >
 		<tr id="dirhis">
 			<td id="directory" >Directory:
@@ -240,5 +251,7 @@
 	<%
 		}
 	%>
+	</div>
+<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>
