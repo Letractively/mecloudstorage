@@ -11,10 +11,19 @@
 <link rel="stylesheet" type="text/css" href="css/cloud.css" />
 </head>
 <body>
-	<h1>A Cloud Storage System Based On HDFS</h1>
 	<%
 		String username = (String) session.getAttribute("username");
-		if(username == null){
+	%>
+	<div>
+		<p class="title_p">
+			Welcome <a href="userinfo.jsp"><%=username%></a>,
+			<script type="text/javascript" src="js/cal.js"></script>
+		</p>
+		<jsp:include page="header.jsp"></jsp:include>
+		<hr>
+	</div>
+	<%
+		if (username == null) {
 	%>
 	<script type="text/javascript">
 		alert("You must login first!");
@@ -25,12 +34,14 @@
 		UserDao dao = new UserDaoImpl();
 		User u = dao.getinfo(username);
 	%>
-	<p>
-		Your name is :
-		<%=u.getUsername()%></p>
-	<p>
-		Your password is :
-		<%=u.getPassword()%></p>
-
+	<div>
+		<p>
+			Your name is :
+			<%=u.getUsername()%></p>
+		<p>
+			Your password is :
+			<%=u.getPassword()%></p>
+	</div>
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

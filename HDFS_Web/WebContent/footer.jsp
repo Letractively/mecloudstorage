@@ -1,16 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=GB18030"
-	pageEncoding="GB18030"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=GB18030">
-<title>A Cloud Storage Based On HDFS</title>
-<link rel="stylesheet" type="text/css" href="css/cloud.css" />
-</head>
-<body>
-	<div id="footer" style="clear: both; text-align: center;">
-		Designed by Liz.<br /> Designed time 2012/07-2012/08.<br /> Copyright
-		©2012 Lyy.
-	</div>
-</body>
-</html>
+<div id="footer" style="clear: both; text-align: center;">
+	Designed by Liz.<a target="_blank"
+		href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=lfn876Wjpa3V8-rt_PT8_bv2_vg"
+		style="text-decoration: none;"><img
+		src="http://rescdn.qqmail.com/zh_CN/htmledition/images/function/qm_open/ico_mailme_01.png" /></a><br />
+	Designed time 2012/07-2012/08.<br /> Copyright �2012 Lyy.
+</div>

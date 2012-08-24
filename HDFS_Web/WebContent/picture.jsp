@@ -7,29 +7,43 @@
 <title>Picture View</title>
 <link rel="stylesheet" type="text/css" href="css/cloud.css" />
 </head>
-<body id="viewpicture">
-	<h1>Picture View</h1>
+<body>
 	<%
 		String username = (String) session.getAttribute("username");
-		if (username == null) {
 	%>
-	<script type="text/javascript">
-		alert("You must login first!");
-		top.location = "index.jsp";
-	</script>
-	<%
-		}
-		String file = request.getParameter("file");
-		String dir = request.getParameter("dir");
-		if (dir != null) {
-	%>
-	<img src="view.jsp?dir=<%=dir%>&file=<%=file%>"></img>
-	<%
-		} else {
-	%>
-	<img src="view.jsp?file=<%=file%>"></img>
-	<%
-		}
-	%>
+	<div>
+		<p class="title_p">
+			Welcome <a href="userinfo.jsp"><%=username%></a>,
+			<script type="text/javascript" src="js/cal.js"></script>
+		</p>
+		<jsp:include page="header.jsp"></jsp:include>
+		<hr />
+		<h2>Picture View</h2>
+	</div>
+	<div id="picture_div">
+		<%
+			if (username == null) {
+		%>
+		<script type="text/javascript">
+			alert("You must login first!");
+			top.location = "index.jsp";
+		</script>
+		<%
+			}
+			String file = request.getParameter("file");
+			String dir = request.getParameter("dir");
+			if (dir != null) {
+		%>
+
+		<img src="view.jsp?dir=<%=dir%>&file=<%=file%>"></img>
+		<%
+			} else {
+		%>
+		<img src="view.jsp?file=<%=file%>"></img>
+		<%
+			}
+		%>
+	</div>
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

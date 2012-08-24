@@ -10,10 +10,10 @@
 <body>
 	<div>
 		<a id="index_a" href="register.jsp">Register</a>
-		<h1>A Cloud Storage System Based On HDFS</h1>
+		<jsp:include page="header.jsp"></jsp:include>
 	</div>
-	<div id="index_div2">
-		<img id="cloud" src="images/cloud.png" />
+	<div id="index_div">
+		<img id="index_img" src="images/cloud.png" />
 		<fieldset id="index_fieldset">
 			<legend>Login</legend>
 			<form id="index_form" action="check_login.jsp" method="post"

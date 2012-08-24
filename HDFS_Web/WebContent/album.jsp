@@ -19,7 +19,18 @@
 <body>
 	<%
 		String username = (String) session.getAttribute("username");
-			if (username == null) {
+	%>
+	<div>
+		<p class="title_p">
+			Welcome <a href="userinfo.jsp"><%=username%></a>,
+			<script type="text/javascript" src="js/cal.js"></script>
+		</p>
+		<jsp:include page="header.jsp"></jsp:include>
+		<hr />
+		<h2>Album Browser</h2>
+	</div>
+	<%
+		if (username == null) {
 	%>
 	<script type="text/javascript">
 		alert("You must login first!");
@@ -31,18 +42,18 @@
 		PictureDao pic = new PictureDaoImpl();
 		paths = pic.get(username);
 	%>
-	<h1><%=username%>'s Album
-	</h1>
-	<div id="picture">
+	<div id="album_thumbnail">
 		<%
 			for (int i = 0; i < paths.size(); i++) {
 		%>
 		<a href="viewalbum.jsp?path=<%=paths.get(i)%>" rel="lightbox[pic]">
-			<img width="200" height="150" src="thumbnail.jsp?path=<%=paths.get(i)%>"></img>
+			<img width="200" height="150"
+			src="thumbnail.jsp?path=<%=paths.get(i)%>"></img>
 		</a>
 		<%
 			}
 		%>
 	</div>
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>
