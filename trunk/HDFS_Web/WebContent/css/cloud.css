@@ -6,33 +6,50 @@ body {
 h1 {
 	color: white;
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 40px;
+	font-size: 3em;
 	text-align: center;
 }
 
 h2 {
+	color: blue;
 	text-align: center;
 }
 
-#cloud {
-	width: 600px;
-	height: 316px;
+.title_p {
+	font-size: 13px;
+	font-family: Verdana;
+	text-align: right;
+	width: 98%
 }
 
-a {
+.title_p a {
 	text-decoration: none;
 }
 
-#index_a {
-	display: block;
-	text-decoration: underline;
-	text-align: right;
+
+#footer {
+	font-size: 13px;
+	font-family: Verdana;
 }
 
-#index_div2 {
+/*index.jsp's css*/
+#index_a {
+	color: yellow;
+	display: block;
+	font-family: Tahoma, Arial;
+	text-align: right;
+	display: block;
+}
+
+#index_div {
 	text-align: center;
-	position: relative;
-	top: 80px;
+	margin-top: 100px;
+	margin-bottom: 100px;
+}
+
+#index_img {
+	width: 600px;
+	height: 316px;
 }
 
 #index_fieldset {
@@ -46,15 +63,42 @@ a {
 #index_form {
 	text-align: center;
 }
+/*end of index.jsp's css*/
 
-#welcome {
-	font-size: 13px;
-	font-family: Verdana;
-	text-align: right;
-	width: 98%
+/*register.jsp's css*/
+#register_fieldset {
+	text-align: left;
+	margin: 0px auto;
+	width: 300px;
 }
 
-.content,#summary {
+#register_form {
+	text-align: center;
+}
+/*end of register.jsp's css*/
+
+/*main.jsp's css*/
+#main_div_menu {
+	background-color: #66CC99;
+	font-family: Verdana;
+	height: 600px;
+	width: 10%;
+	float: left;
+	margin-top: 46px;
+}
+
+#main_div_menu p {
+	color: green;
+	text-align: center;
+	font: italic bold 20px/30px Georgia, serif;
+}
+
+#main_div_content {
+	width: 90%;
+	float: left;
+}
+
+#main_table_other,.content {
 	margin: 0px auto;
 	font-size: 14px;
 	font-family: Verdana;
@@ -62,50 +106,48 @@ a {
 	width: 95%;
 }
 
+#main_tr_dir,.tr_name {
+	text-align: left;
+}
+
+#main_tr_other {
+	text-align: right;
+}
+
+#main_other_tr {
+	background-color: transparent;
+}
+
 tr {
 	background-color: #3DE3F1;
 }
 
-th {
+.content th {
 	background-color: green;
 	color: white;
 }
 
-tr td {
+td {
 	text-align: center;
-}
-
-#name {
-	text-align: left;
 }
 
 .altrow {
 	background-color: #10C8EB;
 }
 
-#dirhis {
-	background-color: transparent;
-}
-
-#directory {
-	text-align: left;
-}
-
-.icon {
+.main_td_icon {
 	width: 16px;
 	height: 16px;
 }
 
-#history {
-	text-align: right;
-}
-
-.upload {
+.main_upload {
 	font-family: Verdana;
 	margin: 20px 2%;
 	width: 15%;
 }
+/*end of main.jsp's css*/
 
+/*file.jsp's css*/
 #file_table {
 	font-size: 20px;
 	border-collapse: collapse;
@@ -116,33 +158,25 @@ tr td {
 	border: 1px solid black;
 }
 
-#filename {
+#file_td_name {
 	color: blue;
 }
+/*end of file.jsp's css*/
 
-#register_fieldset {
-	text-align: left;
-	margin: 0px auto;
-	width: 300px;
-}
-
-#register_form {
-	text-align: center;
-}
-
-#picture {
+/*album.jsp's css*/
+#album_thumbnail {
 	*zoom: 1;
 	display: block;
 	text-align: center;
 }
 
-#picture:after {
+#album_thumbnail:after {
 	content: "";
 	display: block;
 	clear: both;
 }
 
-#picture a {
+#album_thumbnail a {
 	display: inline-block;
 	background: rgba(255, 255, 255, 0.1);
 	margin-top: 10px;
@@ -155,21 +189,19 @@ tr td {
 	-webkit-transition: all 0.2s ease-out;
 }
 
-#picture a img {
+#album_thumbnail a img {
 	-webkit-border-radius: 4px;
 	border-radius: 4px;
 	border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
-#picture a:hover {
+#album_thumbnail a:hover {
 	background-color: #8ad459;
 }
+/*end of album.jsp's css*/
 
-#viewpicture {
+/*picture.jsp's css*/
+#picture_div {
 	text-align: center;
 }
-
-#footer {
-	font-size: 13px;
-	font-family: Verdana;
-}
+/*end of picture.jsp's css*/
